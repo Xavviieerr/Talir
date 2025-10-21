@@ -11,9 +11,9 @@ import History from "../pages/History";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
-      <SignedIn>
+      <SignedOut>
         <Navbar />
-      </SignedIn>
+      </SignedOut>
       <Routes>
         {/* public routes */}
 
