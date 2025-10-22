@@ -8,25 +8,39 @@ import Signup from "../pages/Signup";
 import Dashboard from "../pages/Dashboard";
 import History from "../pages/History";
 
+import AuthRedirect from "../components/AuthRedirect";
+
 const AppRoutes = () => {
   return (
     <BrowserRouter>
-    <SignedIn>
-        <Navbar />
-    </SignedIn>
+      <AuthRedirect />
       <Routes>
         {/* public routes */}
-        <Route path="/" element={<Home />} />
+
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/sign-up" element={<Signup />} />
 
         {/* Protected Routes */}
         <Route
+          path="/"
+          element={
+            <SignedOut>
+              <Navbar />
+              <Home />
+            </SignedOut>
+          }
+        />
+        <Route
           path="/dashboard"
           element={
-            <SignedIn>
-              <Dashboard />
-            </SignedIn>
+            <>
+              <SignedIn>
+                <Dashboard />
+              </SignedIn>
+              <SignedOut>
+                <RedirectToSignIn />
+              </SignedOut>
+            </>
           }
         />
         <Route
