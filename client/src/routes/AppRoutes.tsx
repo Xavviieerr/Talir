@@ -8,9 +8,12 @@ import Signup from "../pages/Signup";
 import Dashboard from "../pages/Dashboard";
 import History from "../pages/History";
 
+import AuthRedirect from "../components/AuthRedirect";
+
 const AppRoutes = () => {
   return (
     <BrowserRouter>
+      <AuthRedirect />
       <Routes>
         {/* public routes */}
 
@@ -30,9 +33,14 @@ const AppRoutes = () => {
         <Route
           path="/dashboard"
           element={
-            <SignedIn>
-              <Dashboard />
-            </SignedIn>
+            <>
+              <SignedIn>
+                <Dashboard />
+              </SignedIn>
+              <SignedOut>
+                <RedirectToSignIn />
+              </SignedOut>
+            </>
           }
         />
         <Route
