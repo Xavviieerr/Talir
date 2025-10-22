@@ -11,20 +11,18 @@ import History from "../pages/History";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
-      <SignedOut>
-        <Navbar />
-      </SignedOut>
       <Routes>
         {/* public routes */}
 
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/sign-up" element={<Signup />} />
 
         {/* Protected Routes */}
         <Route
           path="/"
           element={
             <SignedOut>
+              <Navbar />
               <Home />
             </SignedOut>
           }
