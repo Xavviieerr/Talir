@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { SignedIn, SignedOut, RedirectToSignIn } from "@clerk/clerk-react";
 
 import Navbar from "../components/layout/Navbar";
@@ -9,11 +9,13 @@ import Dashboard from "../pages/Dashboard";
 import History from "../pages/History";
 
 import AuthRedirect from "../components/AuthRedirect";
+import DashboardHome from "../pages/DashboardHome";
+import DashboardApplications from "../pages/DashboardApplications";
+import DashboardProfile from "../pages/DashboardProfile";
 
 const AppRoutes = () => {
   return (
     <BrowserRouter>
-      <AuthRedirect />
       <Routes>
         {/* public routes */}
 
@@ -42,7 +44,33 @@ const AppRoutes = () => {
               </SignedOut>
             </>
           }
-        />
+        >
+          <Route index element={<Navigate to={"/dashboard/home"} replace />} />
+          <Route
+            path="home"
+            element={
+              <SignedIn>
+                <DashboardHome />
+              </SignedIn>
+            }
+          />
+          <Route
+            path="applications"
+            element={
+              <SignedIn>
+                <DashboardApplications />
+              </SignedIn>
+            }
+          />
+          <Route
+            path="profile"
+            element={
+              <SignedIn>
+                <DashboardProfile />
+              </SignedIn>
+            }
+          />
+        </Route>
         <Route
           path="/history"
           element={
