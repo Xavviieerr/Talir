@@ -16,6 +16,7 @@ import DashboardProfile from "../pages/DashboardProfile";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
+      <AuthRedirect />
       <Routes>
         {/* public routes */}
 
