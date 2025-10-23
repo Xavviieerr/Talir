@@ -23,10 +23,8 @@ const sideBarItemProps: SideBarItemType[] = [
 const Dashboard = () => {
   return (
     <div className="flex">
-      <div className="w-1/5">
-        <DashboardSideBar items={sideBarItemProps} />
-      </div>
-      <div className="w-full">
+      <DashboardSideBar items={sideBarItemProps} />
+      <div className="w-full ring">
         <nav className="flex justify-between p-4 shadow-md">
           <h1 className="text-xl font-bold">Job Application Assistant bot</h1>
           <SignOutButton redirectUrl="/" />

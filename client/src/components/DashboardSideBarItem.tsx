@@ -3,14 +3,15 @@ import type { SideBarItemType } from "../types/dashboardTypes";
 
 interface sideBarItemProps {
   item: SideBarItemType;
+  open: boolean;
 }
 
-const DashboardSideBarItem: React.FC<sideBarItemProps> = ({ item }) => {
+const DashboardSideBarItem: React.FC<sideBarItemProps> = ({ item, open }) => {
   return (
-    <li>
-      <Link to={item.href} className="">
+    <li className="">
+      <Link to={item.href} className="flex p-3 ring rounded-md gap-2 mb-2">
         {item.icon && <span>{item.icon}</span>}
-        <span>{item.label}</span>
+        {open && <span>{item.label}</span>}
       </Link>
     </li>
   );
