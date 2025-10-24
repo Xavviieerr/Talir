@@ -1,6 +1,19 @@
 @import "tailwindcss";
 
-
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #cv-template,
+  #cv-template * {
+    visibility: visible;
+  }
+  #cv-template {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
 }
