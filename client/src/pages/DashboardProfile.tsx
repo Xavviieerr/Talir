@@ -1,4 +1,6 @@
-import React, { useState, type ChangeEvent } from "react";
+import { FileText } from "lucide-react";
+import React, { useEffect, useState, type ChangeEvent } from "react";
+import Loader from "../components/Loader";
 
 interface ProfileInfo {
   firstname: string;
@@ -19,6 +21,8 @@ const DashboardProfile = () => {
   const [profileInfo, setProfileInfo] =
     useState<ProfileInfo>(initialProfileState);
 
+  const [loading, setLoading] = useState(true);
+
   const handleEdit = () => {
     setReadOnly(false);
   };
@@ -37,12 +41,13 @@ const DashboardProfile = () => {
   };
   return (
     <div className=" flex flex-col px-20 ">
-      <div className="flex flex-col border-b-2  border-gray-600 mx-3 my-5 py-2">
+      {/* <Loader /> */}
+      <div className="flex flex-col border-b-2  border-gray-400 mx-3 my-5 py-2">
         <span className="text-2xl font-bold text-gray-700">Profile</span>
         <span>View all your profile details here.</span>
       </div>
-      <div className="h-auto w-full p-3 flex gap-5 rounded-lg my-4">
-        <div className="h-auto shadow-md p-3 w-2/6 rounded-md items-center flex flex-col gap-1">
+      <div className="h-auto w-full p-3 flex gap-5 rounded-lg my-4 border-b-2 rounded-b-lg border-gray-500">
+        <div className="h-auto shadow-md p-3 w-2/6 rounded-md items-center flex flex-col gap-1 ">
           <span className="font-bold text-xl">
             {profileInfo.firstname} {profileInfo.lastname}
           </span>
@@ -55,7 +60,7 @@ const DashboardProfile = () => {
             />
           </div>
         </div>
-        <div className="h-full p-2 w-4/6 flex shadow-lg gap-2">
+        <div className="h-full p-2 py-9 w-4/6 flex shadow-lg gap-2 ">
           <div className="w-1/2 p-2">
             <span className="font-bold text-sm">Bio</span>
             <div className="">
@@ -121,17 +126,63 @@ const DashboardProfile = () => {
               </div>
             </div>
           </div>
-          <div className="ring w-1/2 p-2">
+          <div className="w-1/2 p-2">
             <span className="font-bold text-sm">Other account details</span>
-            <div></div>
+            <div className="flex flex-col gap-2 items-center mt-[20%]">
+              <FileText
+                size={90}
+                strokeWidth={2}
+                className="text-3xl text-blue-900 "
+              />
+              <span className="font-bold">Total applications created</span>
+              <span className="font-bold text-3xl">1000</span>
+            </div>
           </div>
         </div>
       </div>
-      <div className="flex flex-reverse ring w-auto">
-        <button onClick={handleEdit} className="flex ring p-3">
+      <div className="flex flex-row-reverse gap-5  w-auto">
+        <button
+          onClick={handleEdit}
+          className={`
+        animate-bounce
+        text-[#090909]
+        py-2 px-4
+        text-lg
+        rounded-lg
+        bg-[#e8e8e8]
+        cursor-pointer\
+        border-b-2
+        border-blue-900
+         border-[#e8e8e8]
+        transition-all duration-300
+        shadow-[6px_6px_12px_#c5c5c5,-6px_-6px_12px_#ffffff]
+        hover:border-white
+        active:shadow-[4px_4px_12px_#c5c5c5,-4px_-4px_12px_#ffffff]
+      `}
+        >
           Edit
         </button>
-        <button onClick={handleSave}>Save</button>
+        <button
+          onClick={handleSave}
+          className={`
+            animate-bounce
+            border-b-2
+            border-blue-900
+        text-[#090909]
+        py-2 px-4
+        text-lg
+        rounded-lg
+        bg-[#e8e8e8]
+        cursor-pointer
+         border-[#e8e8e8]
+        transition-all duration-300
+        shadow-[6px_6px_12px_#c5c5c5,-6px_-6px_12px_#ffffff]
+        hover:border-white
+        active:shadow-[4px_4px_12px_#c5c5c5,-4px_-4px_12px_#ffffff]
+      `}
+        >
+          Save
+        </button>
       </div>
     </div>
   );
