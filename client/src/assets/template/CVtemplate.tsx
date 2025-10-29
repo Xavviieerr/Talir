@@ -30,7 +30,7 @@ interface CVTemplateProps {
 
 const CVTemplate: React.FC<CVTemplateProps> = ({ data }) => {
   return (
-    <div id="cv-template" className="max-w-3xl mx-auto bg-white shadow-xl rounded-lg p-8">
+    <div id="cv-template" className="max-w-3xl mx-auto bg-white rounded-lg p-8">
       {/* Header */}
       <header className="border-b border-gray-300 pb-4 mb-4">
         <h1 className="text-3xl font-bold text-gray-800">{data.name}</h1>

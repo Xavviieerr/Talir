@@ -6,7 +6,6 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Dashboard from "../pages/Dashboard";
-import History from "../pages/History";
 
 import AuthRedirect from "../components/AuthRedirect";
 import DashboardHome from "../pages/DashboardHome";
@@ -72,14 +71,6 @@ const AppRoutes = () => {
             }
           />
         </Route>
-        <Route
-          path="/history"
-          element={
-            <SignedIn>
-              <History />
-            </SignedIn>
-          }
-        />
         {/* Redirect users who are not signed in */}
         <Route
           path="*"
