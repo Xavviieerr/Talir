@@ -7,14 +7,12 @@ interface ProfileInfo {
   lastname: string;
   email: string;
   status: "user" | "admin";
-  nationality: string;
 }
 const initialProfileState: ProfileInfo = {
   firstname: "maria",
   lastname: "fernanda",
   email: "mariafernanda@gmail.com",
   status: "user",
-  nationality: "spanish",
 };
 const DashboardProfile = () => {
   const [readOnly, setReadOnly] = useState(true);
@@ -103,21 +101,6 @@ const DashboardProfile = () => {
                     onChange={handleChange}
                     readOnly={readOnly}
                     value={profileInfo.email}
-                    className={`${
-                      readOnly ? "outline-none" : "outline"
-                    } w-full`}
-                  />
-                </span>
-              </div>
-              <div className="flex flex-col p-2 border-b-1 border-dashed">
-                <span className="text-sm text-gray-500">Nationality</span>
-                <span className="text-gray-800 font-bold">
-                  <input
-                    type="text"
-                    name="nationality"
-                    onChange={handleChange}
-                    readOnly={readOnly}
-                    value={profileInfo.nationality}
                     className={`${
                       readOnly ? "outline-none" : "outline"
                     } w-full`}
